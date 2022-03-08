@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="card">
+        <form action="" method="post">
+            <div class="card-header">
+                <h1>EDIT DATA</h1>
+            </div>
+
+            <div class="card-body">
+                <div class="mb-3 row">
+                    <label for="id" class="col-sm-2 col-form-label">ID</label>
+                    <div class="col-sm-10">
+                        <input type="text" id="id" name="id" value="<%= data.id %>">
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="string" class="col-sm-2 col-form-label">String</label>
+                    <div class="col-sm-10">
+                        <input type="text" id="string" name="string" value="<%= data.string %>">
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="integer" class="col-sm-2 col-form-label">Integer</label>
+                    <div class="col-sm-10">
+                        <input type="text" id="integer" name="integer" value="<%= data.integer %>">
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="float" class="col-sm-2 col-form-label">Float</label>
+                    <div class="col-sm-10">
+                        <input type="text" id="float" name="float" value="<%= data.float %>">
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="date" class="col-sm-2 col-form-label">Date</label>
+                    <div class="col-sm-10">
+                        <input type="date" id="date" name="date" value="<%= data.date %>">
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="bolean" class="col-sm-2 col-form-label">Boolean</label>
+                    <select class="label-select" aria-label="Disabled select example" class="form-label" id="boolean" name="bolean" value="<%= data.bolean %>">
+                        <option selected>Choose the boolean</option>
+                        <option value="true">true</option>
+                        <option value="false">false</option>
+                    </select>
+                </div>
+            </div>
+            <div class="card-footer">
+                <button type="submit" class="btn btn-info">UPDATE</button>
+                <a href="/" class="btn btn-warning">Kembali</a>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>
