@@ -3,9 +3,23 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var session = require('express-session');
+var flash = require('connect-flash');
+const fileUpload = require('express-fileupload');
+const { Pool } = require('pg')
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+const pool = new Pool({
+  user: 'postgres',
+  host: 'localhost',
+  database: 'postgres',
+  password: '12345',
+  port: 5432,
+})
+
+
+
+var indexRouter = require('./routes/index')(pool);
+
 
 var app = express();
 
@@ -18,9 +32,16 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(session({
+  secret: 'rubicamp',
+  resave: true,
+  saveUninitialized: true
+}))
+app.use(flash());
+app.use(fileUpload());
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -56,12 +56,12 @@
             </div>
 
             <div class="row">
-                <label for="bolean" class="col-sm-2">Boolean</label>
+                <label for="boolean" class="col-sm-2">Boolean</label>
                 <div class="col-sm-10">
-                    <select class="form-control" id="bolean" name="bolean">
+                    <select class="form-control" id="boolean" name="boolean">
                         <option value="">--Choose the boolean--</option>
-                        <option value="true" <%=query.bolean=="true" ? " selected" : "" %>>Yes</option>
-                        <option value="false" <%=query.bolean=="false" ? " selected" : "" %>>No</option>
+                        <option value="true" <%=query.boolean=="true" ? " selected" : "" %>>Yes</option>
+                        <option value="false" <%=query.boolean=="false" ? " selected" : "" %>>No</option>
                     </select>
                 </div>
             </div>
@@ -86,25 +86,25 @@
     </tr>
     </thead>
     <tbody>
-        <% data.forEach((item, index)=> { %>
+        <% data.forEach((item)=> { %>
             <tr>
                 <td>
-                    <%= index + 1 %>
+                    <%= item.id %>
                 </td>
                 <td>
-                    <%= item.string %>
+                    <%= item.stringdata %>
                 </td>
                 <td>
-                    <%= item.integer %>
+                    <%= item.integerdata %>
                 </td>
                 <td>
-                    <%= item.float %>
+                    <%= item.floatdata %>
                 </td>
                 <td>
-                    <%= item.date %>
+                    <%= item.datedata %>
                 </td>
                 <td>
-                    <%= item.bolean ? 'Yes' : 'No' %>
+                    <%= item.booleandata ? 'Yes' : 'No' %>
                 </td>
                 <td>
                     <a href="/edit/<%= item.id %>" class="btn btn-success">Edit</a>
@@ -112,6 +112,7 @@
                 </td>
             </tr>
             <% }) %>
+            
     </tbody>
     </table>
     <nav aria-label="Page navigation example">
