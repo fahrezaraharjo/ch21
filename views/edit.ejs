@@ -21,39 +21,40 @@
                 <div class="mb-3 row">
                     <label for="id" class="col-sm-2 col-form-label">ID</label>
                     <div class="col-sm-10">
-                        <input type="text" id="id" name="id" value="<%= data.id %>">
+                        <input disabled type="number" id="id" name="id" placeholder="<%= data.id %>">
                     </div>
                 </div>
                 <div class="mb-3 row">
                     <label for="string" class="col-sm-2 col-form-label">String</label>
                     <div class="col-sm-10">
-                        <input type="text" id="string" name="string" value="<%= data.string %>">
+                        <input type="text" id="string" name="string" value="<%= data.stringdata %>">
                     </div>
                 </div>
                 <div class="mb-3 row">
                     <label for="integer" class="col-sm-2 col-form-label">Integer</label>
                     <div class="col-sm-10">
-                        <input type="text" id="integer" name="integer" value="<%= data.integer %>">
+                        <input type="number" id="integer" name="integer" value="<%= data.integerdata %>">
                     </div>
                 </div>
                 <div class="mb-3 row">
                     <label for="float" class="col-sm-2 col-form-label">Float</label>
                     <div class="col-sm-10">
-                        <input type="text" id="float" name="float" value="<%= data.float %>">
+                        <input type="number" step="0.001" id="float" name="float" value="<%= data.floatdata %>">
                     </div>
                 </div>
                 <div class="mb-3 row">
                     <label for="date" class="col-sm-2 col-form-label">Date</label>
                     <div class="col-sm-10">
-                        <input type="date" id="date" name="date" value="<%= data.date %>">
+                        <input type="date" id="date" name="date" value="<%= moment(data.datedata).format('YYYY-MM-DD') %>">
                     </div>
                 </div>
                 <div class="mb-3">
-                    <label for="bolean" class="col-sm-2 col-form-label">Boolean</label>
-                    <select class="label-select" aria-label="Disabled select example" class="form-label" id="boolean" name="bolean" value="<%= data.bolean %>">
-                        <option selected>Choose the boolean</option>
-                        <option value="true">true</option>
+                    <label for="boolean" class="col-sm-2 col-form-label">Boolean</label>
+                    <select class="label-select" aria-label="Disabled select example" class="form-label" id="boolean"
+                        name="boolean" value="<%= data.booleandata %>">
+
                         <option value="false">false</option>
+                        <option value="true" <%=data.booleandata ? 'selected' : 'No' %> >true</option>
                     </select>
                 </div>
             </div>

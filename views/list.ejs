@@ -4,22 +4,22 @@
 
     <title>Learn BREAD</title>
     <link href="/stylesheets/bootstrap.min.css" rel="stylesheet" href="style.css" type="text/css">
-
+    <link href="/fontawesome/css/all.css" rel="stylesheet">
 </head>
 
 </div>
-<h1>BREAD</h1>
-<h2>Filters</h2>
+<h1>BREADS</h1>
+
 
 <div class="card">
     <form action="" method="get">
         <div class="card-header" style="color: rgb(2, 111, 212);">
-            <h2>Search</h2>
+            <h2>Filters</h2>
         </div>
 
-        
+
         <div class="card-body">
-            <div class="row">
+            <div class="mb-3 row">
                 <label for="id" class="col-sm-2 col-form-label">ID</label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control" id="id" name="id">
@@ -27,35 +27,38 @@
                 </div>
             </div>
 
-            <div class="row">
+            <div class="mb-3 row">
                 <label for="string" class="col-sm-2 col-form-label">String</label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control" id="string" name="string">
                 </div>
             </div>
 
-            <div class="row">
+            <div class="mb-3 row">
                 <label for="integer" class="col-sm-2 col-form-label">Integer</label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control" id="integer" name="integer">
                 </div>
             </div>
 
-            <div class="row">
+            <div class="mb-3 row">
                 <label for="float" class="col-sm-2 col-form-label">Float</label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control" id="float" name="float">
                 </div>
             </div>
 
-            <div class="row">
-                <label for="date" class="col-sm-2 col-form-label">Date</label>
-                <div class="col-sm-10">
-                    <input type="date" class="form-control" id="date" name="date">
+            <div class="mb-3 row">
+                <label for="date"  class="col-md col-form-label">Date</label>
+                <div class="col-md-10
+                ">
+                    <input type="date" class="form-control" id="date" name="startdate" value="<%= moment(data.datedata).format('YYYY-MM-DD') %>">
+                    <h2 style="font-size: small;">To</h2>
+                    <input type="date" class="form-control" id="date" name="enddate" value="<%= moment(data.datedata).format('YYYY-MM-DD') %>">
                 </div>
             </div>
 
-            <div class="row">
+            <div class="mb-3 row">
                 <label for="boolean" class="col-sm-2">Boolean</label>
                 <div class="col-sm-10">
                     <select class="form-control" id="boolean" name="boolean">
@@ -66,75 +69,96 @@
                 </div>
             </div>
         </div>
-            <table class="table table-striped">
-                <thead<div class="card-footer">
-                            <button type="submit" class="btn btn-primary">Cari</button>
-                            <a href="/" class="btn btn-warning">Reset</a>
-                        </div>
-                </div>
+        <table class="table table-striped">
+            <thead<div class="card-footer">
+                <button type="submit" class="btn btn-primary">Cari</button>
+                <a href="/" class="btn btn-warning">Reset</a>
+</div>
+</div>
 
 
-    </form>
-    <tr>
-        <th>ID</th>
-        <th>String</th>
-        <th>Integer</th>
-        <th>Float</th>
-        <th>Date</th>
-        <th>Boolean</th>
-        <th>Actions</th>
-    </tr>
-    </thead>
-    <tbody>
-        <% data.forEach((item)=> { %>
-            <tr>
-                <td>
-                    <%= item.id %>
-                </td>
-                <td>
-                    <%= item.stringdata %>
-                </td>
-                <td>
-                    <%= item.integerdata %>
-                </td>
-                <td>
-                    <%= item.floatdata %>
-                </td>
-                <td>
-                    <%= item.datedata %>
-                </td>
-                <td>
-                    <%= item.booleandata ? 'Yes' : 'No' %>
-                </td>
-                <td>
-                    <a href="/edit/<%= item.id %>" class="btn btn-success">Edit</a>
-                    <a href="/delete/<%= item.id %>" class="btn btn-danger">Delete</a>
-                </td>
-            </tr>
-            <% }) %>
-            
-    </tbody>
-    </table>
-    <nav aria-label="Page navigation example">
-        <ul class="pagination">
-            <li class="page-item">
-                <a class="page-link" href="#" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
+</form>
+<tr>
+    <th><a
+    href="<%= url.replace(`sortBy=${query.sortBy}`, `sortBy=id`).replace(`sortMode=${query.sortMode}`, `sortMode=${query.sortMode == 'asc' ? 'desc' : 'asc'}`)  %>"><i
+        class="fa-solid <%= query.sortBy == 'id' ? query.sortMode == 'asc' ? 'fa-sort-up' : 'fa-sort-down' : 'fa-sort' %>"></i>
+    Id</a></th>
+    <th><a
+        href="<%= url.replace(`sortBy=${query.sortBy}`, `sortBy=stringdata`).replace(`sortMode=${query.sortMode}`, `sortMode=${query.sortMode == 'asc' ? 'desc' : 'asc'}`)  %>"><i
+            class="fa-solid <%= query.sortBy == 'stringdata' ? query.sortMode == 'asc' ? 'fa-sort-up' : 'fa-sort-down' : 'fa-sort' %>"></i>
+        String</a></th>
+    <th><a
+        href="<%= url.replace(`sortBy=${query.sortBy}`, `sortBy=integerdata`).replace(`sortMode=${query.sortMode}`, `sortMode=${query.sortMode == 'asc' ? 'desc' : 'asc'}`)  %>"><i
+            class="fa-solid <%= query.sortBy == 'integerdata' ? query.sortMode == 'asc' ? 'fa-sort-up' : 'fa-sort-down' : 'fa-sort' %>"></i>
+        Integer</a></th>
+    <th><a
+        href="<%= url.replace(`sortBy=${query.sortBy}`, `sortBy=floatdata`).replace(`sortMode=${query.sortMode}`, `sortMode=${query.sortMode == 'asc' ? 'desc' : 'asc'}`)  %>"><i
+            class="fa-solid <%= query.sortBy == 'floatdata' ? query.sortMode == 'asc' ? 'fa-sort-up' : 'fa-sort-down' : 'fa-sort' %>"></i>
+        Float</a></th>
+    <th><a
+        href="<%= url.replace(`sortBy=${query.sortBy}`, `sortBy=datedata`).replace(`sortMode=${query.sortMode}`, `sortMode=${query.sortMode == 'asc' ? 'desc' : 'asc'}`)  %>"><i
+            class="fa-solid <%= query.sortBy == 'datedata' ? query.sortMode == 'asc' ? 'fa-sort-up' : 'fa-sort-down' : 'fa-sort' %>"></i>
+        Date</a></th>
+    <th><a
+        href="<%= url.replace(`sortBy=${query.sortBy}`, `sortBy=booleandata`).replace(`sortMode=${query.sortMode}`, `sortMode=${query.sortMode == 'asc' ? 'desc' : 'asc'}`)  %>"><i
+            class="fa-solid <%= query.sortBy == 'booleandata' ? query.sortMode == 'asc' ? 'fa-sort-up' : 'fa-sort-down' : 'fa-sort' %>"></i>
+        Boolean</a></th>
+    <th>Actions</th>
+</tr>
+</thead>
+<tbody>
+    <% data.forEach((item)=> { %>
+        <tr>
+            <td>
+                <%= item.id %>
+            </td>
+            <td>
+                <%= item.stringdata %>
+            </td>
+            <td>
+                <%= item.integerdata %>
+            </td>
+            <td>
+                <%= item.floatdata %>
+            </td>
+            <td>
+                <%= moment(item.datedata).format('YYYY-MMM-DD') %>
+            </td>
+            <td>
+                <%= item.booleandata ? 'Yes' : 'No' %>
+            </td>
+            <td>
+                <a href="/edit/<%= item.id %>" class="btn btn-success">Edit</a>
+                <a href="/delete/<%= item.id %>" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+        <% }) %>
+
+</tbody>
+</table>
+<nav aria-label="Page navigation example">
+    <ul class="pagination">
+        <li class="page-item <%= page == 1 ? 'disabled' : '' %>">
+            <a class="page-link" href="<%= url.replace(`page=${page}`, `page=${page - 1}`) %>" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+        <% for(let i=1; i<=pages; i++){ %>
+            <li class="page-item <%= i == page ? 'active' : '' %>"><a class="page-link"
+                    href="<%= url.replace(`page=${page}`, `page=${i}`) %>">
+                    <%= i %>
                 </a>
             </li>
-            <% for(let i=1; i<=pages; i++){ %>
-                <li class="page-item <%= i  == page ? 'active' : '' %>"><a class="page-link" href="/?page=<%= i %>">
-                        <%= i %>
-                    </a></li>
-                <% } %>
-                    <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Next">
-                            <span aria-hidden="true">&raquo;</span>
-                        </a>
-                    </li>
-        </ul>
-    </nav>
-    <a href="/add" class="btn-primary">Tambah</a>
-    </body>
+            <% } %>
+                <li class="page-item <%= page == pages ? 'disabled' : '' %>">
+                    <a class="page-link" href="<%= url.replace(`page=${page}`, `page=${Number(page) + 1}`) %>"
+                        aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+    </ul>
+</nav>
+<a href="/add" class="btn btn-primary"><i class="fa-solid fa-plus"></i></i></a>
+</body>
 
-    </html>
+</html>
